@@ -10,7 +10,7 @@ import Form from './routes/form.js';
 
 // Constants
 const SEARCH =
-	'https://gist.githubusercontent.com/mantovanig/267ca5a46da0147feb3837b6bf2c3611/raw/5e38d516fb9de0f08956faa129f558cbac76e7ec/FormigineDomicilio.json';
+	'https://gist.githubusercontent.com/mantovanig/267ca5a46da0147feb3837b6bf2c3611/raw/FormigineDomicilio.json';
 
 export default class App extends Component {
 
