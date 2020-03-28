@@ -56,7 +56,7 @@ export default class Home extends Component {
 					}
 				</div>
 				<div>
-					<p class="mb-5 text-center">Developed with ❤️ by <a class="text-orange-500" href="https://twitter.com/tomma5o">Tomma5o</a></p>
+					<p class="mb-5 text-center">Developed with ❤️ by <a class="text-orange-500" href="https://mantovanig.it">mantovanig</a></p>
 				</div>
 			</Fragment>
 		);

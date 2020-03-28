@@ -10,7 +10,7 @@ import Form from './routes/form.js';
 
 // Constants
 const SEARCH =
-	'https://gist.githubusercontent.com/tomma5o/1ca63d091b01a2fa6a73a17cc86b8fe6/raw/FerraraDomicilio.json';
+	'https://gist.githubusercontent.com/mantovanig/267ca5a46da0147feb3837b6bf2c3611/raw/5e38d516fb9de0f08956faa129f558cbac76e7ec/FormigineDomicilio.json';
 
 export default class App extends Component {
 
@@ -40,7 +40,6 @@ export default class App extends Component {
 	}
 
 	render(props, { isHomepage, results }) {
-		console.log(isHomepage)
 		return (
 			<div id="app" class="px-5">
             <nav class="flex justify-end items-center">
@@ -55,7 +54,7 @@ export default class App extends Component {
 					<span role="img" aria-label="biker">
 						🚴
 					</span>
-					Ferrara a Domicilio
+					Formigine a Domicilio
 				</h1>
 				<Router onChange={this.handleRoute}>
 					<Home path="/" results={results} />
