@@ -7,7 +7,7 @@ export const CategoryItem = ({ name = "", icon = "", stores = 0 }) => {
                   <span class="text-3xl">{icon}</span>
                </div>
                <div class="mr-3">
-                  <span class="text-3xl capitalize">{name}</span>
+                  <span class="text-xl md:text-3xl capitalize">{name}</span>
                </div>
                <div>
                   <span class="align-baseline rounded-full bg-indigo-500 uppercase px-3 py-1 text-base font-bold mr-3 text-white">
