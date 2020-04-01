@@ -7,6 +7,7 @@ import 'tailwindcss/dist/tailwind.min.css';
 // Routes
 import Home from './routes/home.js';
 import Form from './routes/form.js';
+import Category from './routes/category';
 
 // Components
 import { Dialog } from './components/dialog.js';
@@ -15,6 +16,9 @@ import { Dialog } from './components/dialog.js';
 const SEARCH = process.env.PREACT_APP_DATA_SOURCE;
 
 export const Action = createContext({})
+
+// stubs
+import resultsMock from './assets/formigineDomicilio.json';
 
 export default class App extends Component {
 
@@ -54,8 +58,8 @@ export default class App extends Component {
 			.then(r => r.json())
 			.then(json => {
 				this.setState({
-					results: json,
-					resultBkp: json
+					results: resultsMock,
+					resultBkp: resultsMock
 				});
 			});
 	}
@@ -75,9 +79,9 @@ export default class App extends Component {
 						{
 							isHomepage
 								? null
-								: <Link class="m-5 text-blue-500 hover:text-blue-800" href="/">Ritorna alla ricerca</Link>
+								: <Link class="m-2 ml-0 my-5 md:m-5 text-blue-500 hover:text-blue-800 text-sm md:text-base" href="/">Ritorna alla home</Link>
 						}
-						<Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold px-2 py-1 rounded" href="/form">Aggiungi un'attività</Link>
+						<Link class="m-2 my-5 md:m-5 mr-0 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold text-xs md:text-base px-2 py-1 rounded" href="/form">Aggiungi un'attività</Link>
 					</nav>
 					<h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">
 						<span class="block sm:inline-block" role="img" aria-label="biker">
@@ -88,6 +92,7 @@ export default class App extends Component {
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
 						<Form path="/form" />
+						<Category path="categorie/:category" results={results} />
 					</Router>
 				</div>
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} telNumbers={popupNumbers} />

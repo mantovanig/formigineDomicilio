@@ -1,4 +1,5 @@
 import { Component, Fragment } from "preact";
+import { route } from 'preact-router';
 import _isEmpty from "lodash.isempty";
 
 import { ListCategory } from "../components/listCategory";
@@ -41,7 +42,6 @@ export default class Home extends Component {
             .filter(key => stores[key].data.length)
             .map(key => (
                <ListCategory
-                  name={key}
                   category={stores[key]}
                   filter={filter}
                />
@@ -56,7 +56,7 @@ export default class Home extends Component {
 
 			return [...acc, {
 				id: key,
-				name: key,
+				name: results[key].title,
 				icon: results[key].icon,
 				stores: results[key].data.length
 			}]
@@ -64,7 +64,7 @@ export default class Home extends Component {
 
       return (
 			<div>
-				{categories.map((c) => <CategoryItem key={c.id} name={c.name} stores={c.stores} icon={c.icon} />)}
+				{categories.map((c) => <CategoryItem key={c.id} name={c.name} stores={c.stores} icon={c.icon} onClick={() => route(`categorie/${c.id}`)} />)}
 			</div>
 		);
    }
