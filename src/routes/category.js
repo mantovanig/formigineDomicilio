@@ -29,7 +29,6 @@ export default class Category extends Component {
       // TODO: handle loading state in the root component
       if (_isEmpty(results)) return null;
 
-      console.log("category", category);
       const categoryResults = _get(results, category);
       const stores = _get(categoryResults, "data");
 

@@ -23,6 +23,7 @@ export default class Home extends Component {
          return {
             ...acc,
             [key]: {
+               title: results[key].title,
                icon: results[key].icon,
                data: results[key].data.filter(e =>
                   filter.length ? regex.test(e.name) : true
