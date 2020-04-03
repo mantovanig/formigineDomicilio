@@ -1,6 +1,7 @@
 import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import { Link } from "preact-router/match";
+import PWAPrompt from "react-ios-pwa-prompt";
 
 import "tailwindcss/dist/tailwind.min.css";
 
@@ -142,6 +143,14 @@ export default class App extends Component {
                isOpen={isPopupOpen}
                closePopup={this.closePopup}
                telNumbers={popupNumbers}
+            />
+            <PWAPrompt
+               timesToShow={3}
+               debug={true}
+               copyTitle="Sono un'app!"
+               copyBody="Aggiungimi alla home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata!"
+               copyShareButtonLabel="Fai tap sul bottone condividi"
+               copyAddHomeButtonLabel="Fai sulla voce 'Aggiungi a Home'"
             />
          </Action.Provider>
       );
