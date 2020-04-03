@@ -17,7 +17,7 @@ import { Loader } from "./components/Loader";
 export const Action = createContext({});
 
 // stubs
-import resultsMock from "./assets/formigineDomicilio.json";
+// import resultsMock from "./assets/formigineDomicilio.json";
 
 export default class App extends Component {
    state = {
@@ -55,8 +55,8 @@ export default class App extends Component {
          .then(json => {
             this.setState({
                loading: false,
-               results: resultsMock,
-               resultBkp: resultsMock
+               results: json,
+               resultBkp: json
             });
          })
          .catch(() => {
