@@ -147,6 +147,7 @@ export default class App extends Component {
             <PWAPrompt
                timesToShow={3}
                // debug={true}
+               permanentlyHideOnDismiss={false}
                copyTitle="Sono un'app!"
                copyBody="Aggiungimi alla home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata!"
                copyShareButtonLabel="Fai tap sul bottone condividi"
