@@ -13,9 +13,6 @@ import Category from "./routes/category";
 import { Dialog } from "./components/dialog.js";
 import { Loader } from "./components/Loader";
 
-// Constants
-const SEARCH = process.env.PREACT_APP_DATA_SOURCE;
-
 export const Action = createContext({});
 
 // stubs
@@ -52,11 +49,7 @@ export default class App extends Component {
    };
 
    componentDidMount() {
-      fetch(
-         `${SEARCH}?q=${Math.random()
-            .toString(36)
-            .split(".")}`
-      )
+      fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
          .then(r => r.json())
          .then(json => {
             this.setState({
