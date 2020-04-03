@@ -4,7 +4,7 @@ import _isEmpty from "lodash.isempty";
 import _get from "lodash.get";
 
 import { ListItem } from "../components/lisItem";
-
+import { Footer } from "../components/Footer";
 
 export default class Category extends Component {
    state = {
@@ -26,23 +26,20 @@ export default class Category extends Component {
    }
 
    render({ results, category }) {
-      // TODO: handle loading state in the root component
-      if (_isEmpty(results)) return null;
-
       const categoryResults = _get(results, category);
       const stores = _get(categoryResults, "data");
 
       return (
          <Fragment>
-            <div class="relative p-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto pb-10">
+            <div class="relative p-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto pb-6">
                <input
-                  class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   placeholder={`Cerca in ${categoryResults.title}`}
                   onInput={this.handleChangeFilter}
                />
             </div>
-            <div class="m-5">
+            <div class="m-5 pb-4">
                <Link href="/">
                   <button class="bg-transparent w-full hover:bg-blue-500 text-center text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                      <svg
@@ -68,18 +65,7 @@ export default class Category extends Component {
 
                {this.renderListByCategories(stores)}
             </div>
-            {/* TODO: make a footer component */}
-            <div>
-               <p class="mb-5 text-center">
-                  Developed with ❤️ by{" "}
-                  <a
-                     class="text-orange-500"
-                     href={process.env.PREACT_APP_DEV_LINK}
-                  >
-                     {process.env.PREACT_APP_DEV_NAME}
-                  </a>
-               </p>
-            </div>
+            <Footer />
          </Fragment>
       );
    }

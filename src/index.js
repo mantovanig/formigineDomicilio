@@ -11,6 +11,7 @@ import Category from "./routes/category";
 
 // Components
 import { Dialog } from "./components/dialog.js";
+import { Loader } from "./components/Loader";
 
 // Constants
 const SEARCH = process.env.PREACT_APP_DATA_SOURCE;
@@ -22,6 +23,8 @@ import resultsMock from "./assets/formigineDomicilio.json";
 
 export default class App extends Component {
    state = {
+      loading: true,
+      error: false,
       results: {},
       isHomepage: true,
       isPopupOpen: false,
@@ -57,8 +60,15 @@ export default class App extends Component {
          .then(r => r.json())
          .then(json => {
             this.setState({
+               loading: false,
                results: resultsMock,
                resultBkp: resultsMock
+            });
+         })
+         .catch(() => {
+            this.setState({
+               loading: false,
+               error: true
             });
          });
    }
@@ -73,7 +83,31 @@ export default class App extends Component {
       );
    }
 
-   render(props, { isHomepage, results, popupNumbers, isPopupOpen }) {
+   render(
+      props,
+      { isHomepage, results, popupNumbers, isPopupOpen, loading, error }
+   ) {
+      if (loading)
+         return (
+            <div class="w-full h-screen flex items-center justify-center">
+               <Loader />
+            </div>
+         );
+      if (error)
+         return (
+            <div class="w-full h-screen flex items-center justify-center">
+               <div
+                  class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                  role="alert"
+               >
+                  <strong class="font-bold">Ops! </strong>
+                  <span class="block sm:inline">
+                     Qualcosa è andato storto, riprova.
+                  </span>
+               </div>
+            </div>
+         );
+
       return (
          <Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
             <div id="app" class="px-5 max-w-screen-md mx-auto">

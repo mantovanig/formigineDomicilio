@@ -4,6 +4,7 @@ import _isEmpty from "lodash.isempty";
 
 import { ListCategory } from "../components/listCategory";
 import { CategoryItem } from "../components/CategoryItem";
+import { Footer } from "../components/Footer";
 
 export default class Home extends Component {
    state = {
@@ -75,7 +76,7 @@ export default class Home extends Component {
          <Fragment>
             <div class="relative p-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto pb-10">
                <input
-                  class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   placeholder="Cerca Attività"
                   onInput={this.handleChangeFilter}
@@ -86,17 +87,7 @@ export default class Home extends Component {
                   ? this.renderCategoriesList()
                   : this.renderListByCategories()}
             </div>
-            <div>
-               <p class="mb-5 text-center">
-                  Developed with ❤️ by{" "}
-                  <a
-                     class="text-orange-500"
-                     href={process.env.PREACT_APP_DEV_LINK}
-                  >
-                     {process.env.PREACT_APP_DEV_NAME}
-                  </a>
-               </p>
-            </div>
+            <Footer />
          </Fragment>
       );
    }

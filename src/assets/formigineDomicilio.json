@@ -133,30 +133,47 @@
          }
       ]
    },
-   "generi-alimentari": {
+   "frutta-verdura": {
       "icon": "🥬",
-      "title": "Generi alimentari",
+      "title": "Frutta e Verdura",
       "data": [
          {
-            "name": "Il ciliegio (frutta e verdura)",
+            "name": "Il ciliegio",
             "tel": "3391716074",
             "note": ""
          },
          {
-            "name": "Gusto e tradizione (frutta e verdura)",
+            "name": "Gusto e tradizione",
             "tel": "3493620492",
             "note": ""
          },
          {
-            "name": "Sapore unico (frutta e verdura)",
+            "name": "Bottega del campo",
+            "tel": "3471674813",
+            "note": ""
+         },
+         {
+            "name": "Azienda agricola Zini Daniela a Formigine",
+            "tel": "3356147986",
+            "note": ""
+         },
+         {
+            "name": "Sapore unico",
             "tel": "3703101996",
             "note": ""
          },
          {
-            "name": "Bottega del campo (frutta e verdura)",
-            "tel": "3471674813",
+            "name": "Accogli Cosimo",
+            "tel": "059555200",
+            "mail": "",
             "note": ""
-         },
+         }
+      ]
+   },
+   "generi-alimentari": {
+      "icon": "🍖",
+      "title": "Generi alimentari",
+      "data": [
          {
             "name": "A&O (generi alimentari) a Colombaro",
             "tel": "059553611",
@@ -165,11 +182,6 @@
          {
             "name": "Carni Magreta",
             "tel": "059554543",
-            "note": ""
-         },
-         {
-            "name": "Azienda agricola Zini Daniela a Formigine (frutta e verdura)",
-            "tel": "3356147986",
             "note": ""
          },
          {
@@ -198,12 +210,6 @@
             "tel": "3473114417",
             "mail": "",
             "note": "Parmigiano Reggiano e formaggi vari"
-         },
-         {
-            "name": "Accogli Cosimo (frutta e verdura)",
-            "tel": "059555200",
-            "mail": "",
-            "note": ""
          }
       ]
    },
@@ -349,7 +355,7 @@
       "icon": "🐶",
       "title": "Negozi per animali",
       "data": [
-        {
+         {
             "name": "CasaPet (alimenti per animali)",
             "tel": "3891525980",
             "site": "",
