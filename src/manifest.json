@@ -1,6 +1,6 @@
 {
-  "name": "Formgigine a Domicilio",
-  "short_name": "FormgigineDomicilio",
+  "name": "Formigine a Domicilio",
+  "short_name": "Formigine Domicilio",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -8,13 +8,13 @@
   "theme_color": "#fff",
   "icons": [
     {
-      "src": "/assets/icons/android-chrome-192x192.png",
-      "sizes": "192x192",
+      "src": "/assets/icons/apple-touch-icon-152x152.png",
+      "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "/assets/icons/android-chrome-512x512.png",
-      "sizes": "512x512",
+      "src": "/assets/icons/favicon-196x196.png",
+      "sizes": "196x196",
       "type": "image/png"
     }
   ]

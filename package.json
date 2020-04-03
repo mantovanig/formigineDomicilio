@@ -7,7 +7,7 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "preact build",
+    "build": "preact build --no-prerender",
     "serve": "preact build && sirv build --cors --single",
     "dev": "preact watch",
     "lint": "eslint src"
@@ -29,9 +29,14 @@
     "sirv-cli": "^0.4.5"
   },
   "dependencies": {
+    "lodash.get": "^4.4.2",
+    "lodash.isempty": "^4.4.0",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-ios-pwa-prompt": "^1.7.0",
     "tailwindcss": "^1.2.0"
   }
 }
