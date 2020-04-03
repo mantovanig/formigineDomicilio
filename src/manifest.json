@@ -1,6 +1,6 @@
 {
-  "name": "Formgigine a Domicilio",
-  "short_name": "FormgigineDomicilio",
+  "name": "Formigine a Domicilio",
+  "short_name": "FormigineDomicilio",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
