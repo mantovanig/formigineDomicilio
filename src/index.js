@@ -1,7 +1,7 @@
 import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import { Link } from "preact-router/match";
-import PWAPrompt from "react-ios-pwa-prompt";
+// import PWAPrompt from "react-ios-pwa-prompt";
 
 import "tailwindcss/dist/tailwind.min.css";
 
@@ -19,6 +19,13 @@ export const Action = createContext({});
 // stubs
 // import resultsMock from "./assets/formigineDomicilio.json";
 
+const isClient = typeof window !== "undefined";
+
+let PWAPrompt = null;
+if (isClient) {
+   PWAPrompt = require("react-ios-pwa-prompt").default;
+}
+
 export default class App extends Component {
    state = {
       loading: true,
@@ -26,10 +33,10 @@ export default class App extends Component {
       results: {},
       isHomepage: true,
       isPopupOpen: false,
-      popupNumbers: []
+      popupNumbers: [],
    };
 
-   handleRoute = e => {
+   handleRoute = (e) => {
       this.currentUrl = e.url;
       this.setState({ isHomepage: e.url === "/" });
    };
@@ -39,11 +46,11 @@ export default class App extends Component {
 
       this.setState({
          popupNumbers: numberArray,
-         isPopupOpen: true
+         isPopupOpen: true,
       });
    };
 
-   closePopup = e => {
+   closePopup = (e) => {
       if (e.currentTarget === e.target) {
          this.setState({ isPopupOpen: false });
       }
@@ -51,18 +58,18 @@ export default class App extends Component {
 
    componentDidMount() {
       fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
-         .then(r => r.json())
-         .then(json => {
+         .then((r) => r.json())
+         .then((json) => {
             this.setState({
                loading: false,
                results: json,
-               resultBkp: json
+               resultBkp: json,
             });
          })
          .catch(() => {
             this.setState({
                loading: false,
-               error: true
+               error: true,
             });
          });
    }
@@ -144,15 +151,17 @@ export default class App extends Component {
                closePopup={this.closePopup}
                telNumbers={popupNumbers}
             />
-            <PWAPrompt
-               timesToShow={3}
-               // debug={true}
-               permanentlyHideOnDismiss={false}
-               copyTitle="Sono un'app!"
-               copyBody="Aggiungimi alla home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata!"
-               copyShareButtonLabel="Fai tap sul bottone condividi"
-               copyAddHomeButtonLabel="Fai sulla voce 'Aggiungi a Home'"
-            />
+            {PWAPrompt && (
+               <PWAPrompt
+                  timesToShow={3}
+                  // debug={true}
+                  permanentlyHideOnDismiss={false}
+                  copyTitle="Sono un'app!"
+                  copyBody="Aggiungimi alla home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata!"
+                  copyShareButtonLabel="Fai tap sul bottone condividi"
+                  copyAddHomeButtonLabel="Fai sulla voce 'Aggiungi a Home'"
+               />
+            )}
          </Action.Provider>
       );
    }
