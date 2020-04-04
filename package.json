@@ -7,7 +7,7 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "preact build --no-prerender",
+    "build": "preact build",
     "postbuild": "cp -R ./_redirects ./build/_redirects",
     "serve": "preact build && sirv build --cors --single",
     "dev": "preact watch",
