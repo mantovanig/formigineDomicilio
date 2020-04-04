@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "ferraradomicilio",
+  "name": "formiginedomiclio",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -8,6 +8,7 @@
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
     "build": "preact build --no-prerender",
+    "postbuild": "cp -R ./_redirects ./build/_redirects",
     "serve": "preact build && sirv build --cors --single",
     "dev": "preact watch",
     "lint": "eslint src"
@@ -34,8 +35,6 @@
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-ios-pwa-prompt": "^1.7.0",
     "tailwindcss": "^1.2.0"
   }
