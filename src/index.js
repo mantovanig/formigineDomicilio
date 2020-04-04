@@ -23,7 +23,7 @@ const isClient = typeof window !== "undefined";
 
 let PWAPrompt = null;
 if (isClient) {
-   PWAPrompt = require("react-ios-pwa-prompt");
+   PWAPrompt = require("react-ios-pwa-prompt").default;
 }
 
 export default class App extends Component {
