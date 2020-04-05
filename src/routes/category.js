@@ -2,6 +2,7 @@ import { Component, Fragment } from "preact";
 import { Link } from "preact-router";
 import _isEmpty from "lodash.isempty";
 import _get from "lodash.get";
+import { ChevronLeft as IconChevronLeft } from "preact-feather";
 
 import { ListItem } from "../components/lisItem";
 import { Footer } from "../components/Footer";
@@ -42,18 +43,7 @@ export default class Category extends Component {
             <div class="m-5 pb-4">
                <Link href="/">
                   <button class="bg-transparent w-full hover:bg-blue-500 text-center text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                     <svg
-                        class="fill-current inline align-middle"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                     >
-                        <path
-                           class="heroicon-ui"
-                           d="M14.7 15.3a1 1 0 0 1-1.4 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.4 1.4L11.42 12l3.3 3.3z"
-                        />
-                     </svg>
+                     <IconChevronLeft class="inline align-middle mr-2" />
                      <span class="align-middle">Torna alle categorie</span>
                   </button>
                </Link>
