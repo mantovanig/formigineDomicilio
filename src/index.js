@@ -28,7 +28,7 @@ if (isClient) {
 
 console.log('GA_TRACKING_ID', process.env.GA_TRACKING_ID);
 
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.CONTEXT === 'develop') {
    console.log('init GA');
    ReactGA.initialize(process.env.GA_TRACKING_ID);
 }
