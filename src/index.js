@@ -1,7 +1,7 @@
 import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import { Link } from "preact-router/match";
-// import PWAPrompt from "react-ios-pwa-prompt";
+import ReactGA from 'react-ga';
 
 import "tailwindcss/dist/tailwind.min.css";
 
@@ -24,6 +24,14 @@ const isClient = typeof window !== "undefined";
 let PWAPrompt = null;
 if (isClient) {
    PWAPrompt = require("react-ios-pwa-prompt").default;
+}
+
+console.log('GA_TRACKING_ID', process.env.GA_TRACKING_ID);
+
+if (process.env.NODE_ENV !== 'development') {
+   console.log('init GA');
+   ReactGA.initialize(process.env.GA_TRACKING_ID);
+   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 export default class App extends Component {
