@@ -29,6 +29,7 @@ if (isClient) {
 }
 
 console.log('GA_TRACKING_ID', process.env.PREACT_APP_GA_TRACKING_ID);
+console.log('PREACT_APP_CONTEXT', process.env.PREACT_APP_CONTEXT);
 
 if (process.env.PREACT_APP_CONTEXT === 'develop') {
    console.log('init GA');
