@@ -1,3 +1,5 @@
+import { ChevronRight as IconChevronRight } from "preact-feather";
+
 export const CategoryItem = ({ name = "", icon = "", stores = 0, onClick }) => {
    return (
       <div id={name.replace(" ", "_")} className="relative py-2">
@@ -19,18 +21,7 @@ export const CategoryItem = ({ name = "", icon = "", stores = 0, onClick }) => {
                </div>
             </div>
             <div>
-               <svg
-                  class="w-10 h-10"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-               >
-                  <path
-                     class="heroicon-ui"
-                     d="M9.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z"
-                  />
-               </svg>
+               <IconChevronRight />
             </div>
          </div>
       </div>
