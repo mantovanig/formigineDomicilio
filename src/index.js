@@ -1,7 +1,7 @@
 import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import { Link } from "preact-router/match";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 import "tailwindcss/dist/tailwind.min.css";
 
@@ -19,20 +19,18 @@ export const Action = createContext({});
 // stubs
 // import resultsMock from "./assets/formigineDomicilio.json";
 
-import SETTINGS from './settings.json';
+import SETTINGS from "./settings.json";
 
 const isClient = typeof window !== "undefined";
+
+const isProd = process.env.PREACT_APP_CONTEXT === "production";
 
 let PWAPrompt = null;
 if (isClient) {
    PWAPrompt = require("react-ios-pwa-prompt").default;
 }
 
-console.log('GA_TRACKING_ID', process.env.PREACT_APP_GA_TRACKING_ID);
-console.log('PREACT_APP_CONTEXT', process.env.PREACT_APP_CONTEXT);
-
-if (process.env.PREACT_APP_CONTEXT === 'develop') {
-   console.log('init GA');
+if (isProd) {
    ReactGA.initialize(process.env.PREACT_APP_GA_TRACKING_ID);
 }
 
@@ -67,7 +65,9 @@ export default class App extends Component {
    };
 
    componentDidMount() {
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      if (isProd) {
+         ReactGA.pageview(window.location.pathname + window.location.search);
+      }
       fetch(`${SETTINGS.PREACT_APP_DATA_SOURCE}`)
          .then((r) => r.json())
          .then((json) => {
