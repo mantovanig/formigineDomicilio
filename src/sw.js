@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 
+import SETTINGS from './settings.json';
+
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 
 const isNav = event => event.request.mode === 'navigate';
@@ -23,7 +25,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-   new RegExp(`${process.env.PREACT_APP_DATA_SOURCE}`),
+   new RegExp(`${SETTINGS.PREACT_APP_DATA_SOURCE}`),
    new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'GHapi',
         plugins : [
@@ -39,7 +41,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.precaching.precacheAndRoute([
-   `${process.env.PREACT_APP_DATA_SOURCE}`,
+   `${SETTINGS.PREACT_APP_DATA_SOURCE}`,
    ...self.__precacheManifest
 ], {});
 

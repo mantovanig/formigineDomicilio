@@ -19,6 +19,8 @@ export const Action = createContext({});
 // stubs
 // import resultsMock from "./assets/formigineDomicilio.json";
 
+import SETTINGS from './settings.json';
+
 const isClient = typeof window !== "undefined";
 
 let PWAPrompt = null;
@@ -27,6 +29,7 @@ if (isClient) {
 }
 
 console.log('GA_TRACKING_ID', process.env.GA_TRACKING_ID);
+console.log('process.env', process.env);
 
 if (process.env.CONTEXT === 'develop') {
    console.log('init GA');
@@ -65,7 +68,7 @@ export default class App extends Component {
 
    componentDidMount() {
       ReactGA.pageview(window.location.pathname + window.location.search);
-      fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
+      fetch(`${SETTINGS.PREACT_APP_DATA_SOURCE}`)
          .then((r) => r.json())
          .then((json) => {
             this.setState({
@@ -145,7 +148,7 @@ export default class App extends Component {
                      >
                         🚴
                      </span>
-                     {`${process.env.PREACT_APP_CITY} a Domicilio`}
+                     {`${SETTINGS.PREACT_APP_CITY} a Domicilio`}
                   </h1>
                </Link>
                <Router onChange={this.handleRoute}>
