@@ -31,7 +31,6 @@ console.log('GA_TRACKING_ID', process.env.GA_TRACKING_ID);
 if (process.env.NODE_ENV !== 'development') {
    console.log('init GA');
    ReactGA.initialize(process.env.GA_TRACKING_ID);
-   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 export default class App extends Component {
@@ -65,6 +64,7 @@ export default class App extends Component {
    };
 
    componentDidMount() {
+      ReactGA.pageview(window.location.pathname + window.location.search);
       fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
          .then((r) => r.json())
          .then((json) => {
