@@ -28,12 +28,11 @@ if (isClient) {
    PWAPrompt = require("react-ios-pwa-prompt").default;
 }
 
-console.log('GA_TRACKING_ID', process.env.GA_TRACKING_ID);
-console.log('process.env', process.env);
+console.log('GA_TRACKING_ID', process.env.PREACT_APP_GA_TRACKING_ID);
 
-if (process.env.CONTEXT === 'develop') {
+if (process.env.NODE_ENV !== 'develop') {
    console.log('init GA');
-   ReactGA.initialize(process.env.GA_TRACKING_ID);
+   ReactGA.initialize(process.env.PREACT_APP_GA_TRACKING_ID);
 }
 
 export default class App extends Component {
