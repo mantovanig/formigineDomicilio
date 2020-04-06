@@ -95,8 +95,9 @@ export const ListItem = ({ name, tel, site, mail, note }) => {
             </div>
          </div>
          {infoVisible && !_isEmpty(note) && (
-            <div class="block mt-10">
-               <p class="text-yellow-700 text-sm md:text-md lg:text-lg">
+            <div class="block mt-6">
+               <p>Info: </p>
+               <p class="text-blue-800 font-light text-sm md:text-md lg:text-lg">
                   {note}
                </p>
             </div>
