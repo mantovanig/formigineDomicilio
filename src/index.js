@@ -1,7 +1,7 @@
 import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import { Link } from "preact-router/match";
-// import PWAPrompt from "react-ios-pwa-prompt";
+import ReactGA from "react-ga";
 
 import "tailwindcss/dist/tailwind.min.css";
 
@@ -19,11 +19,18 @@ export const Action = createContext({});
 // stubs
 // import resultsMock from "./assets/formigineDomicilio.json";
 
-const isClient = typeof window !== "undefined";
+import SETTINGS from "./settings.json";
+
+import { isClient, isProd } from "./utils";
 
 let PWAPrompt = null;
 if (isClient) {
    PWAPrompt = require("react-ios-pwa-prompt").default;
+}
+
+if (isProd) {
+   ReactGA.initialize(process.env.PREACT_APP_GA_TRACKING_ID);
+   // ReactGA.initialize("UA-162041363-1", { debug: true });
 }
 
 export default class App extends Component {
@@ -57,7 +64,10 @@ export default class App extends Component {
    };
 
    componentDidMount() {
-      fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
+      if (isProd) {
+         ReactGA.pageview(window.location.pathname + window.location.search);
+      }
+      fetch(`${SETTINGS.PREACT_APP_DATA_SOURCE}`)
          .then((r) => r.json())
          .then((json) => {
             this.setState({
@@ -137,7 +147,7 @@ export default class App extends Component {
                      >
                         🚴
                      </span>
-                     {`${process.env.PREACT_APP_CITY} a Domicilio`}
+                     {`${SETTINGS.PREACT_APP_CITY} a Domicilio`}
                   </h1>
                </Link>
                <Router onChange={this.handleRoute}>
