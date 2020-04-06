@@ -21,9 +21,7 @@ export const Action = createContext({});
 
 import SETTINGS from "./settings.json";
 
-const isClient = typeof window !== "undefined";
-
-const isProd = process.env.PREACT_APP_CONTEXT === "production";
+import { isClient, isProd } from "./utils";
 
 let PWAPrompt = null;
 if (isClient) {
@@ -32,6 +30,7 @@ if (isClient) {
 
 if (isProd) {
    ReactGA.initialize(process.env.PREACT_APP_GA_TRACKING_ID);
+   // ReactGA.initialize("UA-162041363-1", { debug: true });
 }
 
 export default class App extends Component {

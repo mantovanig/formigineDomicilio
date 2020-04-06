@@ -5,16 +5,26 @@ import {
    Mail as IconMail,
    Globe as IconGlobe,
 } from "preact-feather";
+import ReactGA from "react-ga";
 import _isEmpty from "lodash.isempty";
 
 // Actions
 import { Action } from "../index";
 
+import { isProd } from "../utils";
+
 export const ListItem = ({ name, tel, site, mail, note }) => {
    const [infoVisible, setInfoVisible] = useState(false);
    const action = useContext(Action);
 
-   function handleClick() {
+   function handleClick(action) {
+      if (isProd) {
+         ReactGA.event({
+            category: "User",
+            label: name,
+            action: `Click on ${action}`,
+         });
+      }
       setInfoVisible(!infoVisible);
    }
 
@@ -27,7 +37,7 @@ export const ListItem = ({ name, tel, site, mail, note }) => {
             <div class="flex">
                {note && (
                   <span
-                     onClick={handleClick}
+                     onClick={() => handleClick("note")}
                      class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center bg-blue-300 leading-8 rounded-lg text-white p-1"
                      role="img"
                      aria-label="warning"
@@ -38,7 +48,7 @@ export const ListItem = ({ name, tel, site, mail, note }) => {
                {site && (
                   <a href={`${site}`}>
                      <span
-                        onClick={handleClick}
+                        onClick={() => handleClick("site")}
                         class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer leading-8 bg-blue-300 rounded-lg flex justify-center items-center p-1 text-white"
                         role="img"
                         aria-label="website"
@@ -50,7 +60,7 @@ export const ListItem = ({ name, tel, site, mail, note }) => {
                {mail && (
                   <a href={`mailto:${mail}`}>
                      <span
-                        onClick={handleClick}
+                        onClick={() => handleClick("mail")}
                         class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer leading-8 bg-blue-300 rounded-lg flex justify-center items-center p-1 text-white"
                         role="img"
                         aria-label="e-mail"
@@ -62,9 +72,16 @@ export const ListItem = ({ name, tel, site, mail, note }) => {
                {tel && (
                   <a
                      href={`tel:${tel}`}
-                     onClick={(e) =>
-                        Array.isArray(tel) && action.setPopupNumbers(e, tel)
-                     }
+                     onClick={(e) => {
+                        if (isProd) {
+                           ReactGA.event({
+                              category: "User",
+                              label: name,
+                              action: "Click on phone number",
+                           });
+                        }
+                        Array.isArray(tel) && action.setPopupNumbers(e, tel);
+                     }}
                   >
                      <span
                         class="inline-block mx-2 w-8 h-8 bg-green-300 leading-8 rounded-lg cursor-pointer flex justify-center items-center p-1"
