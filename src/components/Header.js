@@ -3,7 +3,16 @@ import { Fragment } from "preact";
 import { Link, Match } from "preact-router/match";
 import { ChevronLeft as IconChevronLeft } from "preact-feather";
 
+import { isClient } from "../utils";
+
+
 export const Header = () => {
+   const handleBack = () => {
+      if (isClient) {
+         window.history.back();
+      }
+   };
+
    return (
       <Match path="/">
          {({ matches }) =>
@@ -33,11 +42,11 @@ export const Header = () => {
             ) : (
                <Fragment>
                   <nav class="flex items-center justify-between py-8">
-                     <Link href="/">
+                     <div onClick={handleBack}>
                         <button class="bg-transparent hover:bg-blue-500 text-center text-blue-700 font-semibold hover:text-white p-2 border border-blue-500 hover:border-transparent rounded">
                            <IconChevronLeft />
                         </button>
-                     </Link>
+                     </div>
                      <Link href="/">
                         <h3 class="font-sans text-2xl text-gray-800">
                            <span class="capitalize">

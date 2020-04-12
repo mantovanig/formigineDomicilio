@@ -5,9 +5,15 @@ import _get from "lodash.get";
 import { ChevronLeft as IconChevronLeft } from "preact-feather";
 
 import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export default class Store extends Component {
    render() {
-      return <Fragment>store detail</Fragment>;
+      return (
+         <Fragment>
+            <Header />
+            <Footer />
+         </Fragment>
+      );
    }
 }
