@@ -7,15 +7,18 @@ import {
 } from "preact-feather";
 import ReactGA from "react-ga";
 import _isEmpty from "lodash.isempty";
+import { Link } from "preact-router/match";
 
 // Actions
 import { Action } from "../index";
 
 import { isProd } from "../utils";
 
-export const ListItem = ({ name, tel, site, mail, note }) => {
+export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
    const [infoVisible, setInfoVisible] = useState(false);
    const action = useContext(Action);
+
+   const isCfStore = !_isEmpty(cf_id);
 
    function handleClick(action) {
       if (isProd) {
@@ -31,11 +34,15 @@ export const ListItem = ({ name, tel, site, mail, note }) => {
    return (
       <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700">
          <div class="flex justify-between items-center">
-            <a href="#">
-               <span onClick={handleClick}>{name}</span>
-            </a>
+            {isCfStore ? (
+               <a href="#">
+                  <span onClick={handleClick}>{name}</span>
+               </a>
+            ) : (
+               <Link href={`/store/${cf_id}`}><span onClick={handleClick}>{name}</span></Link>
+            )}
             <div class="flex">
-               {note && (
+               {note && !isCfStore && (
                   <span
                      onClick={() => handleClick("note")}
                      class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center bg-blue-300 leading-8 rounded-lg text-white p-1"
