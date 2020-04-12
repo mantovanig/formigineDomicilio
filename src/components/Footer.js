@@ -3,7 +3,7 @@ import SETTINGS from '../settings.json';
 export const Footer = () => {
    return (
       <div>
-         <p class="mb-5 text-center">
+         <p class="text-center">
             Developed with ❤️ by{" "}
             <a
                class="text-orange-500"
@@ -13,7 +13,8 @@ export const Footer = () => {
             >
                {SETTINGS.PREACT_APP_DEV_NAME}
             </a>
-            <span> - </span>
+         </p>
+         <p class="text-center mb-5">
             (forked from
             <a
                class="text-orange-500"

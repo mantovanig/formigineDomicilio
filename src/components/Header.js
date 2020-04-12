@@ -48,7 +48,7 @@ export const Header = () => {
                         </button>
                      </div>
                      <Link href="/">
-                        <h3 class="font-sans text-2xl text-gray-800">
+                        <h3 class="font-sans text-xl md:text-2xl text-gray-800">
                            <span class="capitalize">
                               {SETTINGS.PREACT_APP_CITY}
                            </span>{" "}

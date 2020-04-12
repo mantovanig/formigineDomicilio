@@ -30,6 +30,7 @@
     "sirv-cli": "^0.4.5"
   },
   "dependencies": {
+    "contentful": "^7.14.2",
     "lodash.get": "^4.4.2",
     "lodash.isempty": "^4.4.0",
     "preact": "^10.3.2",
