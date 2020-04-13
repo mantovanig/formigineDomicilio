@@ -13,15 +13,16 @@ import OpeningHours from "../components/OpeningHours";
 import AdditionalInfo from "../components/AdditionalInfo";
 import Description from "../components/Description";
 import Products from "../components/Products";
+import Contacts from "../components/Contacts";
 
+
+// TODO: create a React Context for contentful client istance
 const client = createClient({
-   // This is the space ID. A space is like a project folder in Contentful terms
    space: "mknnjuohw0w8",
-   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
    accessToken: "Ri-sdcK2C2on3VPAGAz6xBEJdUD7RNmC4jaiGoFIcGk",
 });
 
-const Store = () => {
+const Store = ({ id }) => {
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(false);
    const [data, setData] = useState(null);
@@ -29,14 +30,16 @@ const Store = () => {
    useEffect(() => {
       setLoading(true);
       client
-         .getEntry("6NzfxrPjMz3KMdOcppFrH6")
+         // TODO: take id from path params
+         .getEntry(id)
          .then((entry) => {
             setData(entry);
             setLoading(false);
          })
          .catch(() => setError(true));
-   }, []);
+   }, [id]);
 
+   // TODO: use placeholder block instead of this loader
    if (loading) {
       return (
          <div class="w-full h-screen flex items-center justify-center">
@@ -45,6 +48,7 @@ const Store = () => {
       );
    }
 
+   // TODO: make a common components for errors
    if (error)
       return (
          <div class="w-full h-screen flex items-center justify-center">
@@ -66,13 +70,19 @@ const Store = () => {
    const shippingCosts = _get(data, "fields.shippingCosts");
    const minimoOrdine = _get(data, "fields.minimoOrdine");
    const website = _get(data, "fields.website");
+   const instagram = _get(data, "fields.instagram");
+   const facebook = _get(data, "fields.facebook");
    const description = _get(data, "fields.description");
    const products = _get(data, "fields.products");
+   const operatorName = _get(data, "fields.operatorName");
+   const phone = _get(data, "fields.phone");
+   const mail = _get(data, "fields.mail");
+   const whatsapp = _get(data, "fields.whatsapp");
 
    return (
       <Fragment>
          <Header />
-         <div class="relative mb-10">
+         <div class="relative pb-8">
             <StoreName name={storeName} class="mb-8" />
             <div class="mb-6">
                <OpeningHours openings={openingHours} />
@@ -82,16 +92,21 @@ const Store = () => {
                   shippingCosts={shippingCosts}
                   minimoOrdine={minimoOrdine}
                   website={website}
+                  instagram={instagram}
+                  facebook={facebook}
                />
             </div>
             <div class="mb-6">
                <Description description={description} />
             </div>
-            <div class="mb-6">
+            <div>
                <Products products={products} />
             </div>
+            <Contacts operatorName={operatorName} phone={phone} mail={mail} whatsapp={whatsapp} />
          </div>
-         <Footer />
+         <div class="hidden md:block">
+            <Footer />
+         </div>
       </Fragment>
    );
 };

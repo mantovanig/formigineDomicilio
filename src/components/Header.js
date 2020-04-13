@@ -9,6 +9,7 @@ import { isClient } from "../utils";
 export const Header = () => {
    const handleBack = () => {
       if (isClient) {
+         // TODO: check there are history
          window.history.back();
       }
    };

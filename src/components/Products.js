@@ -5,14 +5,15 @@ const Products = ({ products }) => {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
+      arrows: false,
+      // slidesToShow: 1,
+      // slidesToScroll: 1,
    };
 
    const prods = products.map((e) => e.fields);
 
    return (
-      <div>
+      <div class="w-full mb-6">
          <h3 class="font-sans text-xl font-medium mb-2">Alcuni prodotti</h3>
          <Slider {...settings}>
             {prods.map((f) => (

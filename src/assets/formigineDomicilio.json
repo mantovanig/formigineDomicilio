@@ -36,6 +36,7 @@
          {
             "name": "Gelateria New Monique",
             "tel": "3388981907",
+            "cf_id": "6NzfxrPjMz3KMdOcppFrH6",
             "note": "Da Lun a Ven dalle 15 alle 19 - Sab e Dom dalle 11 alle 19. Cosnega su Formigine, Fiorano, Spezzano, Maranello, Pozza e Sassuolo."
          },
          {
@@ -341,7 +342,6 @@
          {
             "name": "Il Calcagnino",
             "tel": "3292352830",
-            "cf_id": "jn32j32",
             "site": "http://www.ilcalcagnino.it/en",
             "note": "Ordinazioni per il menu di Pasqua, menu sul sito web"
          },
