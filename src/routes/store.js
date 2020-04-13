@@ -10,6 +10,9 @@ import { Header } from "../components/Header";
 import { Loader } from "../components/Loader";
 import StoreName from "../components/StoreName";
 import OpeningHours from "../components/OpeningHours";
+import AdditionalInfo from "../components/AdditionalInfo";
+import Description from "../components/Description";
+import Products from "../components/Products";
 
 const client = createClient({
    // This is the space ID. A space is like a project folder in Contentful terms
@@ -57,16 +60,36 @@ const Store = () => {
          </div>
       );
 
-
-   console.log('data', data);
-   const storeName = _get(data, 'fields.name');
+   console.log("data", data);
+   const storeName = _get(data, "fields.name");
+   const openingHours = _get(data, "fields.openingHours");
+   const shippingCosts = _get(data, "fields.shippingCosts");
+   const minimoOrdine = _get(data, "fields.minimoOrdine");
+   const website = _get(data, "fields.website");
+   const description = _get(data, "fields.description");
+   const products = _get(data, "fields.products");
 
    return (
       <Fragment>
          <Header />
          <div class="relative mb-10">
-            <StoreName name={storeName} />
-            <OpeningHours />
+            <StoreName name={storeName} class="mb-8" />
+            <div class="mb-6">
+               <OpeningHours openings={openingHours} />
+            </div>
+            <div class="mb-6">
+               <AdditionalInfo
+                  shippingCosts={shippingCosts}
+                  minimoOrdine={minimoOrdine}
+                  website={website}
+               />
+            </div>
+            <div class="mb-6">
+               <Description description={description} />
+            </div>
+            <div class="mb-6">
+               <Products products={products} />
+            </div>
          </div>
          <Footer />
       </Fragment>

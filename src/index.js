@@ -2,6 +2,7 @@ import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import ReactGA from "react-ga";
 
+// css
 import "tailwindcss/dist/tailwind.min.css";
 
 // Routes
