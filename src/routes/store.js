@@ -18,8 +18,8 @@ import Contacts from "../components/Contacts";
 
 // TODO: create a React Context for contentful client istance
 const client = createClient({
-   space: "mknnjuohw0w8",
-   accessToken: "Ri-sdcK2C2on3VPAGAz6xBEJdUD7RNmC4jaiGoFIcGk",
+   space: process.env.PREACT_APP_CF_SPACE,
+   accessToken: process.env.PREACT_APP_CF_TOKEN,
 });
 
 const Store = ({ id }) => {
@@ -30,7 +30,6 @@ const Store = ({ id }) => {
    useEffect(() => {
       setLoading(true);
       client
-         // TODO: take id from path params
          .getEntry(id)
          .then((entry) => {
             setData(entry);
@@ -64,7 +63,6 @@ const Store = ({ id }) => {
          </div>
       );
 
-   console.log("data", data);
    const storeName = _get(data, "fields.name");
    const openingHours = _get(data, "fields.openingHours");
    const shippingCosts = _get(data, "fields.shippingCosts");
@@ -79,11 +77,16 @@ const Store = ({ id }) => {
    const mail = _get(data, "fields.mail");
    const whatsapp = _get(data, "fields.whatsapp");
 
+   const categoryEmoji = _get(data, "fields.category.fields.emoji");
+
    return (
       <Fragment>
          <Header />
          <div class="relative pb-8">
-            <StoreName name={storeName} class="mb-8" />
+            <StoreName name={storeName} categoryEmoji={categoryEmoji} class="mb-8" />
+            <div class="mb-6 hidden md:block">
+               <Contacts operatorName={operatorName} phone={phone} mail={mail} whatsapp={whatsapp} />
+            </div>
             <div class="mb-6">
                <OpeningHours openings={openingHours} />
             </div>
@@ -102,7 +105,6 @@ const Store = ({ id }) => {
             <div>
                <Products products={products} />
             </div>
-            <Contacts operatorName={operatorName} phone={phone} mail={mail} whatsapp={whatsapp} />
          </div>
          <div class="hidden md:block">
             <Footer />

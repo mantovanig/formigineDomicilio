@@ -18,7 +18,7 @@ const Products = ({ products }) => {
          <Slider {...settings}>
             {prods.map((f) => (
                <div>
-                  <div class="border-solid border-gray-300 border-2 rounded-md overflow-hidden m-2">
+                  <div class="border-solid border-gray-300 border rounded-md overflow-hidden m-2">
                      <div>
                         <img src={f.file.url} alt={f.title} />
                      </div>

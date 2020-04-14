@@ -5,6 +5,7 @@ import {
    Phone as IconPhone,
    Mail as IconMail,
    Globe as IconGlobe,
+   ChevronRight as IconChevronRight,
 } from "preact-feather";
 import ReactGA from "react-ga";
 import _isEmpty from "lodash.isempty";
@@ -41,6 +42,7 @@ export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
       setInfoVisible(!infoVisible);
    }
 
+   // TODO: refactor this splitting components for detail page
    return (
       <WrapperLink id={cf_id}>
          <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700">
@@ -54,65 +56,72 @@ export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
                      <span onClick={handleClick}>{name}</span>
                   </a>
                )}
-               <div class="flex">
-                  {note && !cf_id && (
-                     <span
-                        onClick={() => handleClick("note")}
-                        class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center bg-blue-300 leading-8 rounded-lg text-white p-1"
-                        role="img"
-                        aria-label="warning"
-                     >
-                        <IconInfo />
-                     </span>
-                  )}
-                  {site && (
-                     <a href={`${site}`}>
+               {cf_id ? (
+                  <div>
+                     <IconChevronRight />
+                  </div>
+               ) : (
+                  <div class="flex">
+                     {note && !cf_id && (
                         <span
-                           onClick={() => handleClick("site")}
-                           class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer leading-8 bg-blue-300 rounded-lg flex justify-center items-center p-1 text-white"
+                           onClick={() => handleClick("note")}
+                           class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center bg-blue-300 leading-8 rounded-lg text-white p-1"
                            role="img"
-                           aria-label="website"
+                           aria-label="warning"
                         >
-                           <IconGlobe />
+                           <IconInfo />
                         </span>
-                     </a>
-                  )}
-                  {mail && (
-                     <a href={`mailto:${mail}`}>
-                        <span
-                           onClick={() => handleClick("mail")}
-                           class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer leading-8 bg-blue-300 rounded-lg flex justify-center items-center p-1 text-white"
-                           role="img"
-                           aria-label="e-mail"
+                     )}
+                     {site && (
+                        <a href={`${site}`}>
+                           <span
+                              onClick={() => handleClick("site")}
+                              class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer leading-8 bg-blue-300 rounded-lg flex justify-center items-center p-1 text-white"
+                              role="img"
+                              aria-label="website"
+                           >
+                              <IconGlobe />
+                           </span>
+                        </a>
+                     )}
+                     {mail && (
+                        <a href={`mailto:${mail}`}>
+                           <span
+                              onClick={() => handleClick("mail")}
+                              class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer leading-8 bg-blue-300 rounded-lg flex justify-center items-center p-1 text-white"
+                              role="img"
+                              aria-label="e-mail"
+                           >
+                              <IconMail />
+                           </span>
+                        </a>
+                     )}
+                     {tel && (
+                        <a
+                           href={`tel:${tel}`}
+                           onClick={(e) => {
+                              if (isProd) {
+                                 ReactGA.event({
+                                    category: "User",
+                                    label: name,
+                                    action: "Click on phone number",
+                                 });
+                              }
+                              Array.isArray(tel) &&
+                                 action.setPopupNumbers(e, tel);
+                           }}
                         >
-                           <IconMail />
-                        </span>
-                     </a>
-                  )}
-                  {tel && (
-                     <a
-                        href={`tel:${tel}`}
-                        onClick={(e) => {
-                           if (isProd) {
-                              ReactGA.event({
-                                 category: "User",
-                                 label: name,
-                                 action: "Click on phone number",
-                              });
-                           }
-                           Array.isArray(tel) && action.setPopupNumbers(e, tel);
-                        }}
-                     >
-                        <span
-                           class="inline-block mx-2 w-8 h-8 bg-green-300 leading-8 rounded-lg cursor-pointer flex justify-center items-center p-1"
-                           role="img"
-                           aria-label="telephone"
-                        >
-                           <IconPhone />
-                        </span>
-                     </a>
-                  )}
-               </div>
+                           <span
+                              class="inline-block mx-2 w-8 h-8 bg-green-300 leading-8 rounded-lg cursor-pointer flex justify-center items-center p-1"
+                              role="img"
+                              aria-label="telephone"
+                           >
+                              <IconPhone />
+                           </span>
+                        </a>
+                     )}
+                  </div>
+               )}
             </div>
             {infoVisible && !_isEmpty(note) && (
                <div class="block mt-6">
