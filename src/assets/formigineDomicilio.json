@@ -1,4 +1,34 @@
 {
+   "pasqua": {
+      "icon": "🐣",
+      "title": "Menù di Pasqua",
+      "data": [
+         {
+            "name": "Eric Organization",
+            "tel": "3336715983",
+            "site": "https://www.facebook.com/ericorganizationofficial/photos/rpp.403223866495104/1603064469844365/?type=3&theater",
+            "note": "Menu €30 - Pasqua e Pasquetta"
+         },
+         {
+            "name": "Arena 2.0",
+            "tel": "3517017033",
+            "site": "https://www.facebook.com/arena2.0/photos/a.198009857261719/999731500422880/?type=3&theater",
+            "note": "Conesgna gratuita - Si accettano prenotazioni entro le ore 13 di Venerdì 10 Aprile"
+         },
+         {
+            "name": "Il Calcagnino",
+            "tel": "3292352830",
+            "site": "http://www.ilcalcagnino.it/en",
+            "note": "Ordinazioni per il menu di Pasqua, menu sul sito web"
+         },
+         {
+            "name": "Ristorante Pizzeria La Plaza",
+            "tel": "0596133907",
+            "site": "https://www.facebook.com/events/524121505175673/",
+            "note": "Pranzo di Pasqua e di Pasquetta con consegna a domicilio - Menu completo nel link qui affianco "
+         }
+      ]
+   },
    "gelaterie": {
       "icon": "🍦",
       "title": "Gelaterie",
@@ -6,6 +36,7 @@
          {
             "name": "Gelateria New Monique",
             "tel": "3388981907",
+            "cf_id": "6NzfxrPjMz3KMdOcppFrH6",
             "note": "Da Lun a Ven dalle 15 alle 19 - Sab e Dom dalle 11 alle 19. Cosnega su Formigine, Fiorano, Spezzano, Maranello, Pozza e Sassuolo."
          },
          {
@@ -17,6 +48,11 @@
             "name": "Gelateria Ciao",
             "tel": "059556709",
             "note": "Sono state ricevute segnalazioni che il servizio non è disponibile"
+         },
+         {
+            "name": "Joia Gelateria Naturale",
+            "tel": "3358225670",
+            "note": "da venerdì 10 aprile"
          }
       ]
    },
@@ -81,7 +117,7 @@
          },
          {
             "name": "Ristorante Pizzeria Aquila Bianca",
-            "tel": "059552114",
+            "tel": ["3341157348", "059552114"],
             "note": ""
          },
          {
@@ -92,6 +128,16 @@
          {
             "name": "Ristorante Pizzeria Vecchio Mulino",
             "tel": "059557346",
+            "note": ""
+         },
+         {
+            "name": "Pizzeria dal Mitico",
+            "tel": ["0597102206", "3316360890"],
+            "note": ""
+         },
+         {
+            "name": "Pizzeria Lo Scugnizzo",
+            "tel": "059237902",
             "note": ""
          }
       ]
@@ -129,6 +175,24 @@
             "name": "Forno Barbolini",
             "tel": "059550462",
             "site": "https://g.co/kgs/7G1D9f",
+            "note": ""
+         },
+         {
+            "name": "Forno Pinelli",
+            "tel": "059556217",
+            "site": "",
+            "note": "Conesgna nel comune di Formigine e zone limitrofe"
+         },
+         {
+            "name": "Pan Caffè Barbieri",
+            "tel": "3461757507",
+            "site": "",
+            "note": "prodotti da forno e generi alimentari"
+         },
+         {
+            "name": "Forno L'Araba Fenice",
+            "tel": "3487092808",
+            "site": "",
             "note": ""
          }
       ]
@@ -210,6 +274,44 @@
             "tel": "3473114417",
             "mail": "",
             "note": "Parmigiano Reggiano e formaggi vari"
+         },
+         {
+            "name": "Pazzi di Grano",
+            "tel": "3456667255",
+            "site": "https://www.pazzidigrano.com",
+            "note": "Produzione di Tortellini, Tortelloni, Tagliatelle, Passatelli, Gnocchi di Patate, Lasagne, Rosette, Cannelloni. Consegna anche Farina, uova, formaggio e ricotta fresca. Mandare l'ordine almeno il giorno prima, la consegna a domicilio avverrà il pomeriggio del giorno dopo dal martedì al venerdì dalle 14.00 alle 19.00, il Sabato consegne dalle 9.00 alle 19.00."
+         },
+         {
+            "name": "Modena Caffè di Baroni Alberto",
+            "tel": "3349712211",
+            "site": "https://www.modena-caffe.it/",
+            "note": "Vendita di cialde e capsule di caffè con macchine in comodato d'uso e caffè macinato."
+         },
+         {
+            "name": "Dalle Alpi all'Appennino (miele) di Giovanni Lazzari",
+            "tel": ["3356433256", "3477149431"],
+            "site": "",
+            "note": ""
+         },
+         {
+            "name": "WeAndFit",
+            "tel": ["3928156538", "3291350270"],
+            "site": "",
+            "note": "prodotti dietetici, integratori, vitamine, omega 3, sali minerali, barrette energetiche, alimenti proteici, gel igienizzanti mani, acqua in PET, capsule caffè Espresso Point"
+         },
+         {
+            "name": "Soc. Agr. Le Capre della Selva Romanesca s.s.",
+            "tel": "3495368700",
+            "site": "https://www.capredellaselva.it",
+            "mail": "info@capredellaselva.it",
+            "note": "Formaggi Bio, Ricotta Bio e Yogurt Bio derivati da latte caprino biologico"
+         },
+         {
+            "name": "Barbieri Ambulanti Salumi e Formaggi dal 1960",
+            "tel": "3534060841",
+            "site": "https://m.facebook.com/barbierisalumieformaggi/",
+            "mail": "barbierimarco@outlook.com",
+            "note": ""
          }
       ]
    },
@@ -236,6 +338,37 @@
             "name": "Ristorazione Bertani",
             "tel": "059512120",
             "note": ""
+         },
+         {
+            "name": "Il Calcagnino",
+            "tel": "3292352830",
+            "site": "http://www.ilcalcagnino.it/en",
+            "note": "Ordinazioni per il menu di Pasqua, menu sul sito web"
+         },
+         {
+            "name": "Centrale Formigine",
+            "tel": "3385907984",
+            "site": "",
+            "note": "Su Facebook troverete le nostre proposte per la consegna a domicilio"
+         },
+         {
+            "name": "Sapori Perduti",
+            "tel": ["059574924", "3897663059"],
+            "site": "",
+            "note": ""
+         },
+         {
+            "name": "La cucina incantata lab a Corlo",
+            "tel": "3482662679",
+            "site": "",
+            "note": ""
+         },
+         {
+            "name": "Il giuggiolo",
+            "tel": "059463062",
+            "site": "",
+            "mail": "il.giuggiolo.giuggiolo@gmail.com",
+            "note": ""
          }
       ]
    },
@@ -248,6 +381,12 @@
             "tel": "059570165",
             "mail": "info@libreriagilioli.com",
             "note": ""
+         },
+         {
+            "name": "Mondadori Bookstore",
+            "tel": "3335221103",
+            "mail": "",
+            "note": "Consegna in 48h e gratuita per ordini superiori a €20. Per quelli inferiori la consegna costa €1"
          }
       ]
    },
@@ -263,6 +402,19 @@
          {
             "name": "Cantina Villa di Corlo",
             "tel": "059 510736",
+            "mail": "info@villadicorlo.com",
+            "note": ""
+         },
+         {
+            "name": "L'enoteca del Calcagnino",
+            "tel": ["059578065", "3292352830"],
+            "mail": "info@ilcalcagnino.it",
+            "note": ""
+         },
+         {
+            "name": "La Cantinetta",
+            "tel": "3408394843",
+            "mail": "",
             "note": ""
          }
       ]
@@ -290,6 +442,16 @@
             "name": "Lavanderia Green wash a Ubersetto",
             "tel": "3922896344",
             "note": ""
+         },
+         {
+            "name": "Lavagettoni ELECTROLUX",
+            "tel": "3286717664",
+            "note": "self service/no stiro, ritiro e consegna in giornata"
+         },
+         {
+            "name": "Lavanderia Profumo di Pulito a Magreta",
+            "tel": "3703313429",
+            "note": "lavaggio, stiro e sartoria"
          }
       ]
    },
@@ -318,6 +480,108 @@
          }
       ]
    },
+   "abbigliamento": {
+      "icon": "👕",
+      "title": "Abbigliamento",
+      "data": [
+        {
+            "name": "Rose Rosse",
+            "tel": "3312447652",
+            "mail": "",
+            "site": "",
+            "note": "intimo, pigiameria, calzetteria uomo donna"
+         },
+         {
+            "name": "Baby Shop Calzature",
+            "tel": "3937626058",
+            "mail": "",
+            "site": "",
+            "note": ""
+         },
+         {
+            "name": "Alice Abbigliamento",
+            "tel": "3458428399",
+            "mail": "",
+            "site": "",
+            "note": ""
+         },
+         {
+            "name": "PincoPallino",
+            "tel": "3271147136",
+            "mail": "",
+            "site": "",
+            "note": "calzature uomo, donna e bambino"
+         },
+         {
+            "name": "ANNESA Store",
+            "tel": "3395441504",
+            "mail": "",
+            "site": "",
+            "note": "anche Whatsapp - abbigliamento e intimo per bambini 0/16 anni, pigiami, calze, intimo uomo e donna"
+         },
+         {
+            "name": "Undercolors of Benetton",
+            "tel": "3351437636",
+            "mail": "",
+            "site": "",
+            "note": "intimo e pigiami per uomo, donna e bambino/a, abbigliamento da tempo libero per donna"
+         },
+         {
+            "name": "M59STORE",
+            "tel": "3495572596",
+            "mail": "m59formigine@gmail.com",
+            "site": "",
+            "note": "Abbigliamento uomo e donna"
+         },
+         {
+            "name": "DERBY ABBIGLIAMENTO SRL",
+            "tel": "3356829090",
+            "mail": "derbyabbigliamentosrl@email.it",
+            "site": "https://www.derbyabbigliamento.com",
+            "note": "Uomo donna e accessori calzature - come da decreto  DPL   le CONSEGNE    NEL  COMUNE DI FORMIGINE"
+         },
+         {
+            "name": "3.30 Running Store sas",
+            "tel": "3356304763",
+            "mail": "info@running330.it",
+            "site": "https://www.running330.it",
+            "note": "Ricordiamo che le nostre consegne verranno effettuate nel rispetto di tutte le norme di protezione  previste dalla normativa, per il vostro e nostro bene. TRATTIAMO ARTICOLI SPORTIVI : Calzature e abbigliamento  da running , walking e palestra. Inoltre trattiamo articoli per la BOXE."
+         },
+         {
+            "name": "B-LAB",
+            "tel": "3393773207",
+            "mail": "",
+            "site": "",
+            "note": "Abbigliamento donna"
+         }
+      ]
+   },
+   "cancelleria": {
+      "icon": "🖨",
+      "title": "Cancelleria / Ufficio",
+      "data": [
+         {
+            "name": "Ink Color di Mucciarelli Matteo",
+            "tel": "3286468524",
+            "site": "www.ink-color.it",
+            "note": "consegna a domicilio di cartucce e toner"
+         },
+         {
+            "name": "Mail Boxes Etc",
+            "tel": ["059572830", "3463554124"],
+            "mail": "mbe459@mbe.it",
+            "site": "",
+            "note": "cartucce, toner, carta per stampanti, servizio di spedizioni, prodotti per il bucato e per l’igiene della casa"
+         },
+         {
+            "name": "Martinelli Modena Buffetti",
+            "tel": "0594555560",
+            "mail": "formigine@martinellimodena.com",
+            "site": "",
+            "note": "carrozzine, deambulatori e prodotti elettromedicali"
+         }
+      ]
+   },
    "prodotti-casa": {
       "icon": "🧼",
       "title": "Prodotti per la casa",
@@ -338,16 +602,44 @@
             "note": "Commercio equo-solidale a Formigine"
          },
          {
-            "name": "Ink Color di Mucciarelli Matteo",
-            "tel": "3286468524",
-            "site": "www.ink-color.it",
-            "note": "consegna a domicilio di cartucce e toner"
-         },
-         {
             "name": "Affilatura Formiginese",
             "tel": "3515206832",
             "site": "",
             "note": "alcool, gel mani, detergente antibatterico, guanti, copriscarpe, coprimaniche, camici, grembiuli, utensili da cucina"
+         },
+         {
+            "name": "Marisa Tessuti",
+            "tel": "3358370917",
+            "site": "",
+            "note": "mascherine tessili, NON sono un presidio medico"
+         },
+         {
+            "name": "Fantasia Disney",
+            "tel": "3391692704",
+            "mail": "",
+            "site": "",
+            "note": "giocattoli, abbigliamento 0-18 anni, palloncini ad elio"
+         },
+         {
+            "name": "Casa Chic",
+            "tel": "3926314529",
+            "mail": "",
+            "site": "",
+            "note": "oggettistica casa e articoli regalo"
+         },
+         {
+            "name": "In&Out (concept store)",
+            "tel": "3392856055",
+            "mail": "",
+            "site": "",
+            "note": ""
+         },
+         {
+            "name": "Sanitaria ortopedica",
+            "tel": "3293669901",
+            "mail": "",
+            "site": "",
+            "note": "carrozzine, deambulatori e prodotti elettromedicali"
          }
       ]
    },
@@ -358,8 +650,38 @@
          {
             "name": "CasaPet (alimenti per animali)",
             "tel": "3891525980",
-            "site": "",
+            "site": "www.casapet.it",
             "note": ""
+         }
+      ]
+   },
+   "artigiani": {
+      "icon": "🛠",
+      "title": "Artigiani",
+      "data": [
+          {
+            "name": "Edil Di Erre",
+            "tel": "3467857993",
+            "note": "riparazioni edili, elettriche e di idraulica"
+         },
+         {
+            "name": "Ditta Saianelli",
+            "tel": ["059557648", "3452886748"],
+            "note": "vendita e riparazione macchine da cucire, piccoli elettrodomestici, ricambi per Folletto, accessori per cucito"
+         },
+         {
+            "name": "TRACTOR GARDEN",
+            "tel": "3356834545",
+            "mail": "tractorgardenformigine@gmail.com",
+            "site": "https://www.tractorgarden.blogspot.com",
+            "note": "Spedizione gratuita - Riparazioni e manutenzioni senza ricambi effettuate in giornata"
+         },
+         {
+            "name": "G. L CAR SNC",
+            "tel": "3408668753",
+            "mail": "glcar@oksatcom.it",
+            "site": "https://www.glcar.it",
+            "note": "Meccanico, gommista, elettrauto, sanificazione interni auto e furgoni servizio a domicilio e ritiro e riconsegna"
          }
       ]
    },
@@ -371,6 +693,28 @@
             "name": "Azienda Agricola Cavani Milena a Serramazzoni",
             "tel": "3396231381",
             "note": ""
+         },
+         {
+            "name": "Opificio delle verdi note",
+            "tel": "3534064280",
+            "note": "solo messaggio e WhatsApp"
+         },
+         {
+            "name": "Il chiosco di Tiziana",
+            "tel": ["059558338", "3489290988"],
+            "note": ""
+         },
+         {
+            "name": "Geo Tre di Bandieri Bruno & C.",
+            "tel": "059558413",
+            "mail": "geotrebandieri@libero.it",
+            "note": ""
+         },
+         {
+            "name": "Il Giardino di Alice",
+            "tel": "3714327122",
+            "mail": "ilgiardinodialice405@gmail.com",
+            "note": "Piante Fiorite - Composizioni di fiori freschi"
          }
       ]
    }

@@ -5,6 +5,7 @@ import _isEmpty from "lodash.isempty";
 import { ListCategory } from "../components/listCategory";
 import { CategoryItem } from "../components/CategoryItem";
 import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export default class Home extends Component {
    state = {
@@ -74,11 +75,12 @@ export default class Home extends Component {
    render(_, { filter }) {
       return (
          <Fragment>
-            <div class="relative p-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto pb-10">
+            <Header />
+            <div class="relative py-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto pb-10">
                <input
                   class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
-                  placeholder="Cerca Attività"
+                  placeholder="🔎 Cerca Attività"
                   onInput={this.handleChangeFilter}
                />
             </div>
