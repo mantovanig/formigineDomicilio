@@ -1,4 +1,8 @@
+import _isEmpty from "lodash.isempty";
+
 const Description = ({ description }) => {
+   if (_isEmpty(description)) return null;
+
    return (
       <div>
          <h3 class="font-sans text-xl font-medium mb-2">Cosa facciamo</h3>

@@ -8,7 +8,7 @@ const ContactsContent = ({ operatorName, phone, mail, whatsapp }) => {
             {operatorName && (
                <Fragment>
                   <p class="text-sm text-gray-600">Risponde:</p>
-                  <p class="text-lg font-medium">Lara</p>
+                  <p class="text-lg font-medium">{operatorName}</p>
                </Fragment>
             )}
          </div>

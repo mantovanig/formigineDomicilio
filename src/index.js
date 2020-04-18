@@ -4,6 +4,7 @@ import ReactGA from "react-ga";
 
 // css
 import "tailwindcss/dist/tailwind.min.css";
+import "./global.css";
 
 // Routes
 import Home from "./routes/home.js";

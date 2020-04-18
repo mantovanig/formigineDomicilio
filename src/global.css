@@ -1,0 +1,10 @@
+.slick-next:before, .slick-prev:before {
+   color: #000000;
+   display: none;
+}
+
+@media (min-width: 640px) {
+   .slick-next:before, .slick-prev:before { 
+      display: block;
+   }
+ }
