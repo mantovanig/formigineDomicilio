@@ -8,7 +8,7 @@ const Products = ({ products }) => {
       dots: true,
       infinite: true,
       speed: 500,
-      arrows: false,
+      // arrows: false,
       verticalSwiping: false,
       // slidesToShow: 1,
       // slidesToScroll: 1,
