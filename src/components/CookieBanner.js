@@ -1,7 +1,7 @@
 const CookieBanner = ({ onAccept }) => {
    return (
       <div
-         class="sticky bottom-0 bg-teal-100 border-t-4 border-indigo-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+         class="sticky bottom-0 bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
          role="alert"
       >
          <div class="flex items-start max-w-screen-lg mx-auto">
