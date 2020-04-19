@@ -1,6 +1,7 @@
 import { h, Component, createContext } from "preact";
 import { Router } from "preact-router";
 import ReactGA from "react-ga";
+import CookieBanner from "react-cookie-banner";
 
 // css
 import "tailwindcss/dist/tailwind.min.css";
@@ -15,6 +16,7 @@ import Store from "./routes/store";
 // Components
 import { Dialog } from "./components/dialog.js";
 import { Loader } from "./components/Loader";
+import CustomCookieBanner from "./components/CookieBanner";
 
 export const Action = createContext({});
 
@@ -93,10 +95,7 @@ export default class App extends Component {
       );
    }
 
-   render(
-      props,
-      { results, popupNumbers, isPopupOpen, loading, error }
-   ) {
+   render(props, { results, popupNumbers, isPopupOpen, loading, error }) {
       if (loading)
          return (
             <div class="w-full h-screen flex items-center justify-center">
@@ -133,9 +132,16 @@ export default class App extends Component {
                closePopup={this.closePopup}
                telNumbers={popupNumbers}
             />
+            <CookieBanner
+               dismissOnScroll={false}
+               disableStyle
+               cookie="user-has-accepted-cookies"
+            >
+               {(onAccept) => <CustomCookieBanner onAccept={onAccept} />}
+            </CookieBanner>
             {PWAPrompt && (
                <PWAPrompt
-                  timesToShow={3}
+                  timesToShow={2}
                   // debug={true}
                   permanentlyHideOnDismiss={false}
                   copyTitle="Sono un'app!"
