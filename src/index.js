@@ -1,5 +1,6 @@
 import { h, Component, createContext } from "preact";
-import { Router } from "preact-router";
+// import { Router } from "preact-router";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ReactGA from "react-ga";
 import CookieBanner from "react-cookie-banner";
 
@@ -120,12 +121,29 @@ export default class App extends Component {
       return (
          <Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
             <div id="app" class="px-5 max-w-screen-md mx-auto">
-               <Router onChange={this.handleRoute}>
+               <Router>
+                  <Switch>
+                     <Route exact path="/">
+                        <Home results={results} />
+                     </Route>
+                     <Route path="/store/:id">
+                        <Store />
+                     </Route>
+                     <Route path="/form">
+                        <Form />
+                     </Route>
+                     <Route path="/categorie/:category">
+                        <Category results={results} />
+                     </Route>
+                  </Switch>
+               </Router>
+
+               {/* <Router onChange={this.handleRoute}>
                   <Home path="/" results={results} />
                   <Store path="/store/:id" />
                   <Form path="/form" />
                   <Category path="categorie/:category" results={results} />
-               </Router>
+               </Router> */}
             </div>
             <Dialog
                isOpen={isPopupOpen}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "preact/hooks";
 import _isEmpty from "lodash.isempty";
 import _get from "lodash.get";
 import { createClient } from "contentful";
+import { useParams } from "react-router-dom";
 
 // components
 import { Footer } from "../components/Footer";
@@ -22,7 +23,8 @@ const client = createClient({
    accessToken: process.env.PREACT_APP_CF_TOKEN,
 });
 
-const Store = ({ id }) => {
+const Store = () => {
+   const { id } = useParams();
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(false);
    const [data, setData] = useState(null);

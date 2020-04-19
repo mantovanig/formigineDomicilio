@@ -1,4 +1,5 @@
 import { Component, Fragment } from "preact";
+import { useParams } from "react-router-dom";
 import _get from "lodash.get";
 
 import { ListItem } from "../components/lisItem";
@@ -7,10 +8,10 @@ import { Header } from "../components/Header";
 
 export default class Category extends Component {
    state = {
-      filter: ""
+      filter: "",
    };
 
-   handleChangeFilter = e => {
+   handleChangeFilter = (e) => {
       const text = e.target.value;
       this.setState({ filter: text });
    };
@@ -20,11 +21,12 @@ export default class Category extends Component {
       const regex = new RegExp(`${filter}`, "i");
 
       return stores
-         .filter(e => (filter.length ? regex.test(e.name) : true))
-         .map(e => <ListItem {...e} />);
+         .filter((e) => (filter.length ? regex.test(e.name) : true))
+         .map((e) => <ListItem {...e} />);
    }
 
-   render({ results, category }) {
+   render({ results }) {
+      const { category } = useParams();
       const categoryResults = _get(results, category);
       const stores = _get(categoryResults, "data");
 

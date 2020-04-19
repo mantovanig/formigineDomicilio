@@ -1,6 +1,6 @@
 import { Component, Fragment } from "preact";
-import { route } from 'preact-router';
 import _isEmpty from "lodash.isempty";
+import { Link } from "react-router-dom";
 
 import { ListCategory } from "../components/listCategory";
 import { CategoryItem } from "../components/CategoryItem";
@@ -67,7 +67,7 @@ export default class Home extends Component {
 
       return (
 			<div>
-				{categories.map((c) => <CategoryItem key={c.id} name={c.name} stores={c.stores} icon={c.icon} onClick={() => route(`categorie/${c.id}`)} />)}
+				{categories.map((c) => <Link to={`categorie/${c.id}`}><CategoryItem key={c.id} name={c.name} stores={c.stores} icon={c.icon} /></Link>)}
 			</div>
 		);
    }

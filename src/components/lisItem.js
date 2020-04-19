@@ -9,7 +9,7 @@ import {
 } from "preact-feather";
 import ReactGA from "react-ga";
 import _isEmpty from "lodash.isempty";
-import { Link } from "preact-router/match";
+import { Link } from "react-router-dom";
 
 // Actions
 import { Action } from "../index";
@@ -19,7 +19,7 @@ import { isProd } from "../utils";
 const WrapperLink = ({ id, children }) => {
    if (id)
       return (
-         <Link href={`/store/${id}`} onClick={(e) => e.stopPropagation()}>
+         <Link to={`/store/${id}`} onClick={(e) => e.stopPropagation()}>
             {children}
          </Link>
       );
@@ -48,7 +48,7 @@ export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
          <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700">
             <div class="flex justify-between items-center">
                {cf_id ? (
-                  <Link href={`/store/${cf_id}`}>
+                  <Link to={`/store/${cf_id}`}>
                      <span onClick={handleClick}>{name}</span>
                   </Link>
                ) : (
