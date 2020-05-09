@@ -19,6 +19,7 @@ import Store from "./routes/store";
 import { Dialog } from "./components/dialog.js";
 import { Loader } from "./components/Loader";
 import CustomCookieBanner from "./components/CookieBanner";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const Action = createContext({});
 
@@ -143,6 +144,7 @@ export default class App extends Component {
             >
                <div id="app" class="px-5 max-w-screen-md mx-auto">
                   <Router>
+                     <ScrollToTop />
                      <Switch>
                         <Route exact path="/">
                            <Home results={results} />
