@@ -3,6 +3,7 @@ import { h, Component, createContext } from "preact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ReactGA from "react-ga";
 import CookieBanner from "react-cookie-banner";
+import { SWRConfig } from "swr";
 
 // css
 import "tailwindcss/dist/tailwind.min.css";
@@ -18,6 +19,7 @@ import Store from "./routes/store";
 import { Dialog } from "./components/dialog.js";
 import { Loader } from "./components/Loader";
 import CustomCookieBanner from "./components/CookieBanner";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const Action = createContext({});
 
@@ -120,54 +122,69 @@ export default class App extends Component {
 
       return (
          <Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
-            <div id="app" class="px-5 max-w-screen-md mx-auto">
-               <Router>
-                  <Switch>
-                     <Route exact path="/">
-                        <Home results={results} />
-                     </Route>
-                     <Route path="/store/:id">
-                        <Store />
-                     </Route>
-                     <Route path="/form">
-                        <Form />
-                     </Route>
-                     <Route path="/categorie/:category">
-                        <Category results={results} />
-                     </Route>
-                  </Switch>
-               </Router>
-
-               {/* <Router onChange={this.handleRoute}>
-                  <Home path="/" results={results} />
-                  <Store path="/store/:id" />
-                  <Form path="/form" />
-                  <Category path="categorie/:category" results={results} />
-               </Router> */}
-            </div>
-            <Dialog
-               isOpen={isPopupOpen}
-               closePopup={this.closePopup}
-               telNumbers={popupNumbers}
-            />
-            <CookieBanner
-               dismissOnScroll={false}
-               disableStyle
-               cookie="user-has-accepted-cookies"
+            <SWRConfig
+               value={{
+                  refreshInterval: 3000,
+                  // fetcher: (...args) =>
+                  //    fetch(...args).then((res) => res.json()),
+                  fetcher: (...args) => {
+                     return fetch(args[0], {
+                        headers: {
+                           "Content-Type": "application/json",
+                           "X-MBurger-Token": process.env.PREACT_APP_MB_TOKEN,
+                           "X-MBurger-Version":
+                              process.env.PREACT_APP_MB_VERSION,
+                        },
+                        ...args[1],
+                     })
+                        .then((res) => res.json())
+                        .then(({ body }) => body);
+                  },
+               }}
             >
-               {(onAccept) => <CustomCookieBanner onAccept={onAccept} />}
-            </CookieBanner>
-            {PWAPrompt && (
-               <PWAPrompt
-                  timesToShow={2}
-                  // debug={true}
-                  permanentlyHideOnDismiss={false}
-                  copyTitle="Sono un'app!"
-                  copyBody="Aggiungimi alla home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata!"
-                  copyShareButtonLabel="Fai tap sul bottone condividi"
-                  copyAddHomeButtonLabel="Fai sulla voce 'Aggiungi a Home'"
+               <div id="app" class="px-5 max-w-screen-md mx-auto">
+                  <Router>
+                     <ScrollToTop />
+                     <Switch>
+                        <Route exact path="/">
+                           <Home results={results} />
+                        </Route>
+                        <Route path="/store/:id">
+                           <Store />
+                        </Route>
+                        <Route path="/form">
+                           <Form />
+                        </Route>
+                        <Route path="/categorie/:category">
+                           <Category results={results} />
+                        </Route>
+                     </Switch>
+                  </Router>
+               </div>
+               <Dialog
+                  isOpen={isPopupOpen}
+                  closePopup={this.closePopup}
+                  telNumbers={popupNumbers}
                />
-            )}
+               <CookieBanner
+                  dismissOnScroll={false}
+                  disableStyle
+                  cookie="user-has-accepted-cookies"
+               >
+                  {(onAccept) => <CustomCookieBanner onAccept={onAccept} />}
+               </CookieBanner>
+               {PWAPrompt && (
+                  <PWAPrompt
+                     timesToShow={2}
+                     // debug={true}
+                     permanentlyHideOnDismiss={false}
+                     copyTitle="Sono un'app!"
+                     copyBody="Aggiungimi alla home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata!"
+                     copyShareButtonLabel="Fai tap sul bottone condividi"
+                     copyAddHomeButtonLabel="Fai sulla voce 'Aggiungi a Home'"
+                  />
+               )}
+            </SWRConfig>
          </Action.Provider>
       );
    }
