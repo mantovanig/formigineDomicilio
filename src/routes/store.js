@@ -16,12 +16,12 @@ import Products from "../components/Products";
 import Contacts from "../components/Contacts";
 
 const Store = () => {
-   const { id } = useParams();
-   const { data, error } = useSWR(() => `${process.env.PREACT_APP_MB_URL}/sections/${id}/elements?skip=0&sort=id&take=30`);
-   const { data: productsData } = useSWR(() => `${process.env.PREACT_APP_MB_URL}/blocks/774/sections?include=elements&sort=order&filter[value]=store|${id}&skip=0&take=30`);
+   const params = useParams();
+   const { data, error } = useSWR(() => `${process.env.PREACT_APP_MB_URL}/sections/${params.id}/elements?skip=0&sort=id&take=30`);
+   const { data: productsData } = useSWR(() => `${process.env.PREACT_APP_MB_URL}/blocks/774/sections?include=elements&sort=order&filter[value]=store|${params.id}&skip=0&take=30`);
 
-   const categoryId = _get(data, 'items.category.value.section_id');
-   const { data: categoryData } = useSWR(() => `${process.env.PREACT_APP_MB_URL}/sections/${categoryId}/elements?skip=0&sort=id&take=30`);
+   const category = _get(data, 'items.category');
+   const { data: categoryData } = useSWR(() => `${process.env.PREACT_APP_MB_URL}/sections/${category.value.section_id}/elements?skip=0&sort=id&take=30`);
 
    // TODO: use placeholder block instead of this loader
    if (!data) {

@@ -124,7 +124,6 @@ export default class App extends Component {
          <Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
             <SWRConfig
                value={{
-                  refreshInterval: 3000,
                   // fetcher: (...args) =>
                   //    fetch(...args).then((res) => res.json()),
                   fetcher: (...args) => {
