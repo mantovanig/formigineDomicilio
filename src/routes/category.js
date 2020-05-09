@@ -1,10 +1,13 @@
 import { Component, Fragment } from "preact";
 import { useParams } from "react-router-dom";
 import _get from "lodash.get";
+import ReactGA from "react-ga";
 
 import { ListItem } from "../components/lisItem";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+
+import { isProd } from "../utils";
 
 export default class Category extends Component {
    state = {
@@ -13,6 +16,16 @@ export default class Category extends Component {
 
    handleChangeFilter = (e) => {
       const text = e.target.value;
+      const { category } = useParams();
+
+      if (isProd) {
+         ReactGA.event({
+            category: "User",
+            label: text,
+            action: `Text search in ${category}`,
+         });
+      }
+
       this.setState({ filter: text });
    };
 
