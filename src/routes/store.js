@@ -103,7 +103,7 @@ const Store = () => {
             </div>
             <div><Products products={products} /></div>
          </div>
-         <div class="hidden md:block">
+         <div class="block">
             <Footer />
          </div>
       </Fragment>
