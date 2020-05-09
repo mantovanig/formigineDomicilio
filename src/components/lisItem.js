@@ -27,7 +27,7 @@ const WrapperLink = ({ id, children }) => {
    return <Fragment>{children}</Fragment>;
 };
 
-export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
+export const ListItem = ({ name, tel, site, mail, note, mb_id }) => {
    const [infoVisible, setInfoVisible] = useState(false);
    const action = useContext(Action);
 
@@ -44,11 +44,11 @@ export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
 
    // TODO: refactor this splitting components for detail page
    return (
-      <WrapperLink id={cf_id}>
+      <WrapperLink id={mb_id}>
          <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700">
             <div class="flex justify-between items-center">
-               {cf_id ? (
-                  <Link to={`/store/${cf_id}`}>
+               {mb_id ? (
+                  <Link to={`/store/${mb_id}`}>
                      <span onClick={handleClick}>{name}</span>
                   </Link>
                ) : (
@@ -56,13 +56,13 @@ export const ListItem = ({ name, tel, site, mail, note, cf_id }) => {
                      <span onClick={handleClick}>{name}</span>
                   </a>
                )}
-               {cf_id ? (
+               {mb_id ? (
                   <div>
                      <IconChevronRight />
                   </div>
                ) : (
                   <div class="flex">
-                     {note && !cf_id && (
+                     {note && !mb_id && (
                         <span
                            onClick={() => handleClick("note")}
                            class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center bg-blue-300 leading-8 rounded-lg text-white p-1"
