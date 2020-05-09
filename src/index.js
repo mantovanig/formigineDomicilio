@@ -160,13 +160,6 @@ export default class App extends Component {
                         </Route>
                      </Switch>
                   </Router>
-
-                  {/* <Router onChange={this.handleRoute}>
-                  <Home path="/" results={results} />
-                  <Store path="/store/:id" />
-                  <Form path="/form" />
-                  <Category path="categorie/:category" results={results} />
-               </Router> */}
                </div>
                <Dialog
                   isOpen={isPopupOpen}
