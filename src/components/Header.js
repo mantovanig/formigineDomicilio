@@ -19,12 +19,14 @@ export const Header = () => {
    return isExact ? (
       <Fragment>
          <nav class="flex justify-center md:justify-end items-center">
-            <Link
+            <a
                class="m-2 my-5 md:m-5 mr-0 md:mr-0 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold text-xs md:text-base px-2 py-1 rounded"
-               to="/form"
+               href="https://forms.gle/WrrNMiyU2qN9q82N7"
+               target="_BLANK"
+               rel="noopener noreferrer"
             >
                Aggiungi un'attività
-            </Link>
+            </a>
          </nav>
          <Link href="/">
             <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">
