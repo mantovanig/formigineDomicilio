@@ -1,19 +1,32 @@
 import { Component, Fragment } from "preact";
-import { route } from 'preact-router';
 import _isEmpty from "lodash.isempty";
+import { Link } from "react-router-dom";
+import ReactGA from "react-ga";
 
+// components
 import { ListCategory } from "../components/listCategory";
 import { CategoryItem } from "../components/CategoryItem";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
+import { isProd } from "../utils";
+
 export default class Home extends Component {
    state = {
-      filter: ""
+      filter: "",
    };
 
-   handleChangeFilter = e => {
+   handleChangeFilter = (e) => {
       const text = e.target.value;
+
+      if (isProd) {
+         ReactGA.event({
+            category: "User",
+            label: text,
+            action: `Text search in home`,
+         });
+      }
+
       this.setState({ filter: text });
    };
 
@@ -27,10 +40,10 @@ export default class Home extends Component {
             [key]: {
                title: results[key].title,
                icon: results[key].icon,
-               data: results[key].data.filter(e =>
+               data: results[key].data.filter((e) =>
                   filter.length ? regex.test(e.name) : true
-               )
-            }
+               ),
+            },
          };
       }, {});
    }
@@ -42,34 +55,43 @@ export default class Home extends Component {
       return (
          Object.keys(stores) &&
          Object.keys(stores)
-            .filter(key => stores[key].data.length)
-            .map(key => (
-               <ListCategory
-                  category={stores[key]}
-                  filter={filter}
-               />
+            .filter((key) => stores[key].data.length)
+            .map((key) => (
+               <ListCategory category={stores[key]} filter={filter} />
             ))
       );
    }
 
    renderCategoriesList() {
-		const { results } = this.props;
-		const categories = Object.keys(results).reduce((acc, key) => {
-			if (_isEmpty(results[key].data)) return acc;
+      const { results } = this.props;
+      const categories = Object.keys(results).reduce((acc, key) => {
+         if (_isEmpty(results[key].data)) return acc;
 
-			return [...acc, {
-				id: key,
-				name: results[key].title,
-				icon: results[key].icon,
-				stores: results[key].data.length
-			}]
-		}, [])		
+         return [
+            ...acc,
+            {
+               id: key,
+               name: results[key].title,
+               icon: results[key].icon,
+               stores: results[key].data.length,
+            },
+         ];
+      }, []);
 
       return (
-			<div>
-				{categories.map((c) => <CategoryItem key={c.id} name={c.name} stores={c.stores} icon={c.icon} onClick={() => route(`categorie/${c.id}`)} />)}
-			</div>
-		);
+         <div>
+            {categories.map((c) => (
+               <Link to={`categorie/${c.id}`}>
+                  <CategoryItem
+                     key={c.id}
+                     name={c.name}
+                     stores={c.stores}
+                     icon={c.icon}
+                  />
+               </Link>
+            ))}
+         </div>
+      );
    }
 
    render(_, { filter }) {
