@@ -45,7 +45,7 @@ export default class Category extends Component {
 
       return (
          <Fragment>
-            <Header />
+            <Header parentRoute="/" />
             <div class="relative py-5 mb-8 lg:mb-8 lg:max-w-5xl xl:max-w-6xl lg:m-auto">
                <input
                   class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

@@ -1,18 +1,22 @@
 import SETTINGS from "../settings.json";
 import { Fragment } from "preact";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import { ChevronLeft as IconChevronLeft } from "preact-feather";
 
 import { isClient } from "../utils";
 
-export const Header = () => {
+export const Header = ({ parentRoute }) => {
    const match = useRouteMatch("/");
+   const history = useHistory();
    const { isExact } = match;
 
    const handleBack = () => {
       if (isClient) {
-         // TODO: check there are history
-         window.history.back();
+         if (parentRoute) {
+            history.replace(parentRoute);
+         } else {
+            history.goBack();
+         }
       }
    };
 
