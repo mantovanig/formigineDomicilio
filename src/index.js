@@ -151,9 +151,6 @@ export default class App extends Component {
                         <Route path="/store/:id">
                            <Store />
                         </Route>
-                        <Route path="/form">
-                           <Form />
-                        </Route>
                         <Route path="/categorie/:category">
                            <Category results={results} />
                         </Route>

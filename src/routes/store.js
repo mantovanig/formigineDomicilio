@@ -62,6 +62,7 @@ const Store = () => {
    const whatsapp = _get(data, "items.whatsapp.value");
 
    const categoryEmoji = _get(categoryData, "items.emoji.value");
+   const categoryId = _get(categoryData, "items.categoryid.value");
 
    const products = _get(productsData, "items", []).map((p) => ({
       id: _get(p, "id"),
@@ -71,7 +72,7 @@ const Store = () => {
 
    return (
       <Fragment>
-         <Header />
+         <Header parentRoute={`/categorie/${categoryId}`} />
          <div class="relative pb-8">
             <StoreName
                name={storeName}
