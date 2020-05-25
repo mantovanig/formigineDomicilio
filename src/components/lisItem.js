@@ -16,8 +16,8 @@ import { Action } from "../index";
 
 import { isProd } from "../utils";
 
-const WrapperLink = ({ id, children }) => {
-   if (id)
+const WrapperLink = ({ id, hasDetails, children }) => {
+   if (hasDetails)
       return (
          <Link to={`/store/${id}`} onClick={(e) => e.stopPropagation()}>
             {children}
@@ -27,7 +27,7 @@ const WrapperLink = ({ id, children }) => {
    return <Fragment>{children}</Fragment>;
 };
 
-export const ListItem = ({ name, tel, site, mail, note, mb_id }) => {
+export const ListItem = ({ name, tel, site, mail, note, hasDetails, id }) => {
    const [infoVisible, setInfoVisible] = useState(false);
    const action = useContext(Action);
 
@@ -44,11 +44,11 @@ export const ListItem = ({ name, tel, site, mail, note, mb_id }) => {
 
    // TODO: refactor this splitting components for detail page
    return (
-      <WrapperLink id={mb_id}>
+      <WrapperLink hasDetails={hasDetails} id={id}>
          <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700">
             <div class="flex justify-between items-center">
-               {mb_id ? (
-                  <Link to={`/store/${mb_id}`}>
+               {hasDetails ? (
+                  <Link to={`/store/${id}`}>
                      <span onClick={handleClick}>{name}</span>
                   </Link>
                ) : (
@@ -56,13 +56,13 @@ export const ListItem = ({ name, tel, site, mail, note, mb_id }) => {
                      <span onClick={handleClick}>{name}</span>
                   </a>
                )}
-               {mb_id ? (
+               {hasDetails ? (
                   <div>
                      <IconChevronRight />
                   </div>
                ) : (
                   <div class="flex">
-                     {note && !mb_id && (
+                     {note && !id && (
                         <span
                            onClick={() => handleClick("note")}
                            class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center bg-blue-300 leading-8 rounded-lg text-white p-1"

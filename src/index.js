@@ -11,22 +11,15 @@ import "./global.css";
 
 // Routes
 import Home from "./routes/home.js";
-import Form from "./routes/form.js";
 import Category from "./routes/category";
 import Store from "./routes/store";
 
 // Components
 import { Dialog } from "./components/dialog.js";
-import { Loader } from "./components/Loader";
 import CustomCookieBanner from "./components/CookieBanner";
 import ScrollToTop from "./components/ScrollToTop";
 
 export const Action = createContext({});
-
-// stubs
-// import resultsMock from "./assets/formigineDomicilio.json";
-
-import SETTINGS from "./settings.json";
 
 import { isClient, isProd } from "./utils";
 
@@ -41,9 +34,6 @@ if (isProd) {
 
 export default class App extends Component {
    state = {
-      loading: true,
-      error: false,
-      results: {},
       isPopupOpen: false,
       popupNumbers: [],
    };
@@ -71,21 +61,6 @@ export default class App extends Component {
       if (isProd) {
          ReactGA.pageview(window.location.pathname + window.location.search);
       }
-      fetch(`${SETTINGS.PREACT_APP_DATA_SOURCE}`)
-         .then((r) => r.json())
-         .then((json) => {
-            this.setState({
-               loading: false,
-               results: json,
-               resultBkp: json,
-            });
-         })
-         .catch(() => {
-            this.setState({
-               loading: false,
-               error: true,
-            });
-         });
    }
 
    componentDidUpdate() {
@@ -98,28 +73,7 @@ export default class App extends Component {
       );
    }
 
-   render(props, { results, popupNumbers, isPopupOpen, loading, error }) {
-      if (loading)
-         return (
-            <div class="w-full h-screen flex items-center justify-center">
-               <Loader />
-            </div>
-         );
-      if (error)
-         return (
-            <div class="w-full h-screen flex items-center justify-center">
-               <div
-                  class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                  role="alert"
-               >
-                  <strong class="font-bold">Ops! </strong>
-                  <span class="block sm:inline">
-                     Qualcosa è andato storto, riprova.
-                  </span>
-               </div>
-            </div>
-         );
-
+   render(props, { popupNumbers, isPopupOpen }) {
       return (
          <Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
             <SWRConfig
@@ -146,13 +100,13 @@ export default class App extends Component {
                      <ScrollToTop />
                      <Switch>
                         <Route exact path="/">
-                           <Home results={results} />
+                           <Home />
                         </Route>
                         <Route path="/store/:id">
                            <Store />
                         </Route>
                         <Route path="/categorie/:category">
-                           <Category results={results} />
+                           <Category />
                         </Route>
                      </Switch>
                   </Router>
