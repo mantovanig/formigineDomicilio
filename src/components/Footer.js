@@ -19,7 +19,7 @@ export const Footer = () => {
                href="https://web.mburger.cloud/"
                target="_BLANK"
                rel="noopener noreferrer"
-            >MBruger</a>
+            >MBurger</a>
          </p>
          {/* <p class="text-center mb-5">
             (forked from
