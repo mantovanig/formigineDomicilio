@@ -3,6 +3,8 @@ import { Fragment } from "preact";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import { ChevronLeft as IconChevronLeft } from "preact-feather";
 
+import Logo from '../assets/formigine_domicilio_logo.png'
+
 import { isClient } from "../utils";
 
 export const Header = ({ parentRoute }) => {
@@ -33,16 +35,9 @@ export const Header = ({ parentRoute }) => {
             </a>
          </nav>
          <Link href="/">
-            <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">
-               <span
-                  class="block sm:inline-block m-0: md:mr-4"
-                  role="img"
-                  aria-label="biker"
-               >
-                  🚴
-               </span>
-               {`${SETTINGS.PREACT_APP_CITY} a Domicilio`}
-            </h1>
+            <div class="text-center w-full mt-10 mb-10">
+               <img src={Logo} alt="Formigine Domicilio Logo" />
+            </div>
          </Link>
       </Fragment>
    ) : (
@@ -54,10 +49,13 @@ export const Header = ({ parentRoute }) => {
                </button>
             </div>
             <Link to="/">
-               <h3 class="font-sans text-xl md:text-2xl text-gray-800">
+               <div>
+                  <img src={Logo} alt="Formigine Domicilio Logo" width="250" />
+               </div>
+               {/* <h3 class="font-sans text-xl md:text-2xl text-gray-800">
                   <span class="capitalize">{SETTINGS.PREACT_APP_CITY}</span> a
                   Domicilio
-               </h3>
+               </h3> */}
             </Link>
          </nav>
       </Fragment>
